@@ -36,39 +36,43 @@ class _AllExpensesItemListViewState extends State<AllExpensesItemListView> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children:
-          items.asMap().entries.map((e) {
-            int index = e.key;
-            var item = e.value;
-            if (index == 1) {
-              return Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    updateIndex(index);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: AllExpensesItem(
-                      allExpensesItemModel: item,
-                      isSelected: index == selectedIndex,
-                    ),
-                  ),
-                ),
-              );
-            } else {
-              return Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    updateIndex(index);
-                  },
-                  child: AllExpensesItem(
-                    allExpensesItemModel: item,
-                    isSelected: index == selectedIndex,
-                  ),
-                ),
-              );
-            }
-          }).toList(),
+      children: [
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              updateIndex(0);
+            },
+            child: AllExpensesItem(
+              allExpensesItemModel: items[0],
+              isSelected: 0 == selectedIndex,
+            ),
+          ),
+        ),
+        SizedBox(width: 12),
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              updateIndex(1);
+            },
+            child: AllExpensesItem(
+              allExpensesItemModel: items[1],
+              isSelected: 1 == selectedIndex,
+            ),
+          ),
+        ),
+        SizedBox(width: 12),
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              updateIndex(2);
+            },
+            child: AllExpensesItem(
+              allExpensesItemModel: items[2],
+              isSelected: 2 == selectedIndex,
+            ),
+          ),
+        ),
+      ],
     );
   }
 
